@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Commands for Unreal Engine - Game Dev Coding Forum</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e8e8e8;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #4a4a4a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0080ff 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #0080ff;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        #showcase {
+            min-height: 300px;
+            background: url('/api/placeholder/1200/300') no-repeat center;
+            background-size: cover;
+            text-align: center;
+            color: #ffffff;
+        }
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        #showcase p {
+            font-size: 20px;
+        }
+        .command-block {
+            background-color: #2a2a2a;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .command-name {
+            color: #0080ff;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .command-description {
+            margin-top: 10px;
+        }
+        .command-example {
+            background-color: #3a3a3a;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .command-usage {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .command-usage li {
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #0080ff;
+            border-bottom: 2px solid #0080ff;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Game Dev</span> Coding Forum</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="csharp.html">C#</a></li>
+                    <li class="current"><a href="cpp.html">C++</a></li>
+                    <li><a href="javascript.html">JavaScript</a></li>
+                    <li><a href="lua.html">Lua</a></li>
+                    <li><a href="html.html">HTML</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>C++ Commands for Unreal Engine</h1>
+            <p>Essential C++ commands and functions for game development in Unreal Engine</p>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <h2>Actor and Component Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">CreateDefaultSubobject&lt;T&gt;()</div>
+                <div class="command-description">
+                    Creates a new component and attaches it to the actor.
+                </div>
+                <div class="command-example">
+                    UStaticMeshComponent* MeshComponent = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT("MeshComponent"));
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in the constructor of your actor class.</li>
+                        <li>Specify the type of component you want to create as the template parameter.</li>
+                        <li>Provide a unique name for the component as a parameter.</li>
+                        <li>Assign the result to a pointer of the appropriate type.</li>
+                        <li>After creation, you can set properties of the component.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">GetWorld()</div>
+                <div class="command-description">
+                    Returns a pointer to the current game world.
+                </div>
+                <div class="command-example">
+                    UWorld* World = GetWorld();
+                    if (World)
+                    {
+                        // Perform world-related operations
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Can be called from any UObject-derived class.</li>
+                        <li>Use to access the game world for various operations.</li>
+                        <li>Always check if the returned pointer is valid before using it.</li>
+                        <li>Useful for spawning actors, setting timers, and more.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">SpawnActor&lt;T&gt;()</div>
+                <div class="command-description">
+                    Spawns a new actor of the specified class in the world.
+                </div>
+                <div class="command-example">
+                    AMyActor* SpawnedActor = GetWorld()->SpawnActor&lt;AMyActor&gt;(AMyActor::StaticClass(), SpawnLocation, SpawnRotation);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on the UWorld object, usually obtained via GetWorld().</li>
+                        <li>Specify the class of the actor you want to spawn as the template parameter.</li>
+                        <li>Provide the class, spawn location, and rotation as parameters.</li>
+                        <li>Can also use FActorSpawnParameters for more advanced spawn options.</li>
+                        <li>Check if the returned pointer is valid before using the spawned actor.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Movement and Transform Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">SetActorLocation()</div>
+                <div class="command-description">
+                    Sets the actor's position in the world.
+                </div>
+                <div class="command-example">
+                    SetActorLocation(FVector(100.0f, 200.0f, 300.0f));
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on any AActor-derived class.</li>
+                        <li>Provide an FVector with the desired x, y, and z coordinates.</li>
+                        <li>Can be used in Tick() for continuous movement.</li>
+                        <li>Consider using SetActorLocationAndRotation() if you need to set both at once.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">AddActorLocalRotation()</div>
+                <div class="command-description">
+                    Adds a delta rotation to the actor in its local space.
+                </div>
+                <div class="command-example">
+                    AddActorLocalRotation(FRotator(0.0f, 5.0f, 0.0f));
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on any AActor-derived class.</li>
+                        <li>Provide an FRotator with the desired pitch, yaw, and roll.</li>
+                        <li>Useful for rotating an actor relative to its current orientation.</li>
+                        <li>Can be used in Tick() for continuous rotation.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">GetActorForwardVector()</div>
+                <div class="command-description">
+                    Returns the forward (X) unit vector of the actor in world space.
+                </div>
+                <div class="command-example">
+                    FVector ForwardVector = GetActorForwardVector();
+                    SetActorLocation(GetActorLocation() + ForwardVector * 100.0f);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on any AActor-derived class.</li>
+                        <li>Returns an FVector representing the forward direction.</li>
+                        <li>Useful for moving actors in their facing direction.</li>
+                        <li>Can be combined with other vectors for complex movements.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Input Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">BindAxis()</div>
+                <div class="command-description">
+                    Binds a function to an axis input.
+                </div>
+                <div class="command-example">
+                    InputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in the SetupPlayerInputComponent() function of your character class.</li>
+                        <li>First parameter is the name of the axis as defined in the project settings.</li>
+                        <li>Second parameter is the object to call the function on (usually 'this').</li>
+                        <li>Third parameter is a pointer to the function to be called.</li>
+                        <li>The bound function should take a single float parameter.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">BindAction()</div>
+                <div class="command-description">
+                    Binds a function to an action input.
+                </div>
+                <div class="command-example">
+                    InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in the SetupPlayerInputComponent() function of your character class.</li>
+                        <li>First parameter is the name of the action as defined in the project settings.</li>
+                        <li>Second parameter is the key event (IE_Pressed, IE_Released, IE_Repeat).</li>
+                        <li>Third parameter is the object to call the function on (usually 'this').</li>
+                        <li>Fourth parameter is a pointer to the function to be called.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">EnableInput()</div>
+                <div class="command-description">
+                    Enables input for a specific player controller on this actor.
+                </div>
+                <div class="command-example">
+                    APlayerController* PC = Cast&lt;APlayerController&gt;(GetController());
+                    if (PC)
+                    {
+                        EnableInput(PC);
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on the actor that should receive input.</li>
+                        <li>Pass a pointer to the player controller as the parameter.</li>
+                        <li>Typically used when you want non-player actors to receive input.</li>
+                        <li>Make sure to call DisableInput() when input is no longer needed.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Collision and Physics Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">SetCollisionProfileName()</div>
+                <div class="command-description">
+                    Sets the collision profile for a component.
+                </div>
+                <div class="command-example">
+                    GetCapsuleComponent()->SetCollisionProfileName(TEXT("Pawn"));
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on any UPrimitiveComponent-derived class.</li>
+                        <li>Provide the name of a collision profile defined in the project settings.</li>
+                        <li>Useful for setting up collision behavior for actors or components.</li>
+                        <li>Common profiles include "Pawn", "BlockAllDynamic", "OverlapAllDynamic", etc.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">AddImpulse()</div>
+                <div class="command-description">
+                    Adds an impulse to a physics-enabled component.
+                </div>
+                <div class="command-example">
+                    GetMesh()->AddImpulse(FVector(0.0f, 0.0f, 1000.0f));
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Call on any UPrimitiveComponent with physics simulation enabled.</li>
+                        <li>Provide an FVector representing the impulse direction and magnitude.</li>
+                        <li>Useful for instant forces like explosions or jumps.</li>
+                        <li>Make sure the component has a physics body set up in
